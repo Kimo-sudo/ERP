@@ -1,9 +1,7 @@
 ﻿using CleanArchitecture.Application;
 using CleanArchitecture.Application.Common.Interfaces;
-using CleanArchitecture.Infrastructure.Files;
 using CleanArchitecture.Infrastructure.Identity;
 using CleanArchitecture.Infrastructure.Persistence;
-using CleanArchitecture.Infrastructure.Services;
 using IdentityModel;
 using IdentityServer4.Models;
 using IdentityServer4.Test;
@@ -62,10 +60,8 @@ namespace CleanArchitecture.Infrastructure
             {
                 services.AddIdentityServer()
                     .AddApiAuthorization<ApplicationUser, ApplicationDbContext>();
-
-                services.AddTransient<IDateTime, DateTimeService>();
                 services.AddTransient<IIdentityService, IdentityService>();
-                services.AddTransient<ICsvFileBuilder, CsvFileBuilder>();
+           
             }
 
             services.AddAuthentication()
